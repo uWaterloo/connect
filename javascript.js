@@ -88,6 +88,10 @@ angular.module('portalApp')
         $scope.showDetails(nextItem);
     }
 
+    // Get list to search for students
+    $scope.portalHelpers.invokeServerFunction('privDataRead').then(function (result) {
+    	console.log('priv read result',result);
+	});
 }])
 
 // Factory maintains the state of the widget

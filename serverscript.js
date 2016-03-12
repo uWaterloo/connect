@@ -27,3 +27,7 @@ function getOpenData() {
     return proxy.GetProxy('https://api.uwaterloo.ca/v2/foodservices/watcard.json?key=' + apiKey);
 }
 
+function privDataRead(){
+    return privateDataService.Get('API Key');
+}
+
