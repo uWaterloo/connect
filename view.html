@@ -106,19 +106,13 @@
             
             <!--PEOPLE TAB-->
             <div class="tab-pane" id="3">
-                <h3>People</h3>
-                <!-- OPEN DATA API EXAMPLE -->
+                <!-- MOCK DATA API PEOPLE -->
                 <div class="collapseMe">
-                    <widget-row>
-                        <widget-cell>
-                            <h2>Open Data API</h2>
-                        </widget-cell>
-                    </widget-row>
-                    <!-- using AngularJS 'limitTo' to shorten the list to 5 items -->
-                    <widget-list list="item in openDataExampleData.value | limitTo:5">
+                    <widget-list list="item in mockDataPeopleData.value">
                         <widget-row>
                             <widget-cell>
-                                <div class="itemName">{{item.user_id}}</div>
+                                <div class="itemName">{{item.name}}</div>
+                                <div class="pDetails">{{item.program}}</div>
                             </widget-cell>
                         </widget-row>
                     </widget-list>
