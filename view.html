@@ -24,62 +24,67 @@
 			<li><a href="#4" data-toggle="tab">Profile</a></li>
 		</ul>
         <div class="tab-content ">
+            
             <!--MESSAGES TAB-->
             <div class="tab-pane active" id="1">
                 
-                <!-- SEARCH AND LIST EXAMPLE -->
-    <div class="collapseMe">
-        
-        <widget-search 
-             label="Who are you looking for?"
-             placeholder="Type in the name of the group or person" 
-             search-results-title="Results"
-             data="model" 
-             min-char="2" 
-             fields="['title','details']">
-            <widget-filter 
-                    fields="['ingroup']" 
-                    filters="[{value:'0',text:'People'},{value:'1',text:'Groups'}]">
-            </widget-filter>
+    			<div class="collapseMe">
+                    
+                    <widget-search 
+                         label="Who are you looking for?"
+                         placeholder="Type in the name of the group or person" 
+                         search-results-title="Results"
+                         data="model" 
+                         min-char="2" 
+                         fields="['title','details']">
+                        <widget-filter 
+                                fields="['ingroup']" 
+                                filters="[{value:'0',text:'People'},{value:'1',text:'Groups'}]">
+                        </widget-filter>
+                        
+                        <widget-searching>
+                            <widget-list list="item in searchResults" show-items="3">
+                                <widget-row clickable ng-click="showDetails(item)">
+                                    <widget-cell fill>{{item.title}}</widget-cell>
+                                    <widget-cell>
+                                        <widget-icon name="angle-right"></widget-icon>
+                                    </widget-cell>
+                                </widget-row>
+                            </widget-list>
+                        </widget-searching>
 
-            <widget-searching>
-                <widget-list list="item in searchResults" show-items="3">
-                    <widget-row clickable ng-click="showDetails(item)">
-                        <widget-cell fill>{{item.title}}</widget-cell>
-                        <widget-cell>
-                            <widget-icon name="angle-right"></widget-icon>
-                        </widget-cell>
-                    </widget-row>
-                </widget-list>
-            </widget-searching>
-
-            <widget-not-searching>
-                <widget-row>
-                    <widget-cell>
-                        <h2>Item List</h2>
-                    </widget-cell>
-                </widget-row>
-                <widget-list list="item in model" show-items="3">
-                    <widget-row clickable ng-click="showDetails(item)">
-                        <widget-cell fill>{{item.title}}</widget-cell>
-                        <widget-cell>
-                            <widget-icon name="angle-right"></widget-icon>
-                        </widget-cell>
-                    </widget-row>
-                </widget-list>
-            </widget-not-searching>
-        </widget-search>
-    </div>
+                        <widget-not-searching>
+                            <widget-row>
+                                <widget-cell>
+                                    <h2>Recent Messages</h2>
+                                </widget-cell>
+                            </widget-row>
+                            <widget-list list="item in model" show-items="3">
+                                <widget-row clickable ng-click="showDetails(item)">
+                                    <widget-cell fill>{{item.title}}</widget-cell>
+                                    <widget-cell>
+                                        <widget-icon name="angle-right"></widget-icon>
+                                    </widget-cell>
+                                </widget-row>
+                            </widget-list>
+                        </widget-not-searching>
+                        
+                	</widget-search>
+                    
+    			</div>    
                 
             </div>
+            
             <!--GROUPS TAB-->
             <div class="tab-pane" id="2">
                 <h3>Notice the gap between the content and tab after applying a background color</h3>
             </div>
+            
             <!--PEOPLE TAB-->
             <div class="tab-pane" id="3">
                 <h3>add clearfix to tab-content (see the css)</h3>
             </div>
+            
             <!--PROFILE TAB-->
             <div class="tab-pane" id="4">
             <widget-row>
@@ -100,6 +105,21 @@
     </li>
 </script>
 
+<!-- View Message Pages -->
+<script type="text/ng-template" id="details.html">
+    <widget-list-controls prev-click="prevItem" next-click="nextItem" original-item="item.value" prev-text="Previous Message"
+                          next-text="Next Message"></widget-list-controls>
+    <widget-row>
+        <widget-cell>
+            <h2>{{item.value.title}}</h2>
+        </widget-cell>
+    </widget-row>
+    <widget-row>
+        <widget-cell>
+            <div class="pHighlight">{{item.value.details}}</div>
+        </widget-cell>
+    </widget-row>
+</script>
 
 <!-- Bootstrap core JavaScript
     ================================================== -->
