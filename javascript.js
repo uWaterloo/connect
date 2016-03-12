@@ -18,11 +18,25 @@ angular.module('portalApp')
 
     // Model for the search and list example
     $scope.model = [{
+        title: "Krystyna Brudnicki",
+        details: "What's for dinner?",
+        ingroup: '0',
+        incontacts: '1',
+        user_id: 'kbrudnicki',
+        program: 'Systems Design Engineering'
+    }, {
         title: "Jessie Won",
         details: "Hey, how's it going?",
         ingroup: '0',
         incontacts: '1',
         user_id: 'jwon',
+        program: 'Systems Design Engineering'
+    }, {
+        title: "Tara Yuen",
+        details: "Are you going to the portal hackathon today?",
+        ingroup: '0',
+        incontacts: '1',
+        user_id: 'tyuen',
         program: 'Systems Design Engineering'
     }, {
         title: "Portal Hackathon Team",
@@ -35,22 +49,8 @@ angular.module('portalApp')
         ingroup: '1',
         incontacts: '1'
     }, {
-        title: "Tara Yuen",
-        details: "Are you going to the portal hackathon today?",
-        ingroup: '0',
-        incontacts: '1',
-        user_id: 'tyuen',
-        program: 'Systems Design Engineering'
-    }, {
-        title: "Krystyna Brudnicki",
-        details: "I LOVE CONNOR #krishnor",
-        ingroup: '0',
-        incontacts: '1',
-        user_id: 'kbrudnicki',
-        program: 'Systems Design Engineering'
-    }, {
         title: "Zak Keller",
-        details: "item 6 details",
+        details: null,
         ingroup: '0',
         incontacts: '1',
         user_id: 'zkeller',

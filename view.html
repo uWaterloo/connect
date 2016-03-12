@@ -19,8 +19,8 @@
     <div id="connect" class="container">
     	<ul class="nav nav-tabs">
     		<li class="active"><a href="#1" data-toggle="tab">Messages</a></li>
-			<li><a href="#2" data-toggle="tab">Groups</a></li>
-			<li><a href="#3" data-toggle="tab">People</a></li>
+			<li><a href="#2" data-toggle="tab">Contacts</a></li>
+			<li><a href="#3" data-toggle="tab">Explore</a></li>
 			<li><a href="#4" data-toggle="tab">Profile</a></li>
 		</ul>
         <div class="tab-content ">
@@ -84,54 +84,99 @@
                 
             </div>
             
-            <!--GROUPS TAB-->
+            <!--CONTACTS TAB-->
             <div class="tab-pane" id="2">
                 
+                <div class="collapseMe">
+                    
+                    <widget-search 
+                         label="Who are you looking for?"
+                         placeholder="Type in the name of the group or person" 
+                         search-results-title="Your contacts"
+                         data="model" 
+                         min-char="2" 
+                         fields="['title','program']">
+                        <widget-filter 
+                                fields="['ingroup']" 
+                                filters="[{value:'0',text:'People'},{value:'1',text:'Groups'}]">
+                        </widget-filter>
+                        
+                        <widget-searching>
+                            <widget-list list="item in searchResults" show-items="5">
+                                <widget-row clickable ng-click="showDetails(item)">
+                                    <widget-cell>
+                                        <u>{{item.title}}</u>
+                                        <p><h6>{{item.program}}</h6></p>
+                                    </widget-cell>
+                                    <widget-cell>
+                                        <div align="right"><widget-icon name="comment-alt"></widget-icon></div>
+                                    </widget-cell>
+                                </widget-row>
+                            </widget-list>
+                        </widget-searching>
+
+                        <widget-not-searching>
+                            <widget-row>
+                                <widget-cell>
+                                    <h2>
+                                        Your Contacts
+                                    </h2>
+                                </widget-cell>
+                            </widget-row>
+                            <widget-list list="item in model" show-items="5">
+                                <widget-row clickable ng-click="showDetails(item)">
+                                    <widget-cell>
+                                        <u>{{item.title}}</u>
+                                        <p><h6>{{item.program}}</h6></p>
+                                    </widget-cell>
+                                    <widget-cell>
+                                        <div align = "right"><widget-icon name="comment-alt"></widget-icon></div>
+                                    </widget-cell>
+                                </widget-row>
+                            </widget-list>
+                        </widget-not-searching>
+                        
+                	</widget-search>
+                    
+    			</div>  
                 
             </div>
-            
-            <!--PEOPLE TAB-->
+         
+            <!--EXPLORE TAB-->
             <div class="tab-pane" id="3">
                
-                <!-- WIDGET SEARCH BLOCK --> 
-                <widget-search 
-                     label="Search for other groups" 
-                     placeholder="Type in the name of the group" 
-                     search-results-title="Suggested Groups"
-                     data="model" 
-                     min-char="2" 
-                     fields="['title']">
-                    <widget-filter 
-                            fields="['incontacts']" 
-                            filters="[{value:'0',text:'In Groups'},{value:'1',text:'Not in groups'}]">
-                    </widget-filter>
-                    <widget-searching>
-                        <widget-list list="item in searchResults" show-items="7">
-                            <widget-row clickable ng-click="showDetails(item)">
-                                <widget-cell fill>{{item.title}}</widget-cell>
-                                <widget-cell>
-                                    <widget-icon name="angle-right"></widget-icon>
-                                </widget-cell>
-                            </widget-row>
-                        </widget-list>
-                    </widget-searching>
-                    <widget-not-searching>
-                        <widget-row>
-                            <widget-cell>
-                                <h2>Item List</h2>
-                            </widget-cell>
-                        </widget-row>
-                        <widget-list list="item in model" show-items="7">
-                            <widget-row clickable ng-click="showDetails(item)">
-                                <widget-cell fill>{{item.title}}</widget-cell>
-                                <widget-cell>
-                                    <widget-icon name="angle-right"></widget-icon>
-                                </widget-cell>
-                            </widget-row>
-                        </widget-list>
-                    </widget-not-searching>
-                </widget-search>
-               
+                <div class="collapseMe">
+                    
+                    <widget-search 
+                         label="Who are you looking for?"
+                         placeholder="Type in the name of the group or person" 
+                         search-results-title="Suggested Connections"
+                         data="model" 
+                         min-char="2" 
+                         fields="['title','program']">
+                        <widget-filter 
+                                fields="['ingroup']" 
+                                filters="[{value:'0',text:'People'},{value:'1',text:'Groups'}]">
+                        </widget-filter>
+                        
+                        <widget-searching>
+                            <widget-list list="item in searchResults" show-items="5">
+                                <widget-row clickable ng-click="showDetails(item)">
+                                    <widget-cell>
+                                        <u>{{item.title}}</u>
+                                        <p><h6>{{item.program}}</h6></p>
+                                    </widget-cell>
+                                    <widget-cell>
+                                        <div align="right"><widget-icon name="user"></widget-icon></div>
+                                    </widget-cell>
+                                </widget-row>
+                            </widget-list>
+                        </widget-searching>
+                        
+                	</widget-search>
+                    
+    			</div>  
+                
             </div>
             
             <!--PROFILE TAB-->
@@ -150,6 +195,7 @@
                     <p>Faculty: {{studentData.faculty}}</p>
 					<p>Current Term: {{studentData.level}}</p>
                     <p>Program: Systems Design Engineering</p>
+                    <p>Email: jhywon@uwaterloo.ca</p>
             	</widget-cell>
         	</widget-row>
                 
