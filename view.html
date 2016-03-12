@@ -1,15 +1,39 @@
-<script type="text/ng-template" id="main.html"> 
+<script type="text/ng-template" id="loading.html"> 
+    <widget-row>
+        <widget-cell>
+            <div class="pDetails">
+                Loading..
+            </div>
+        </widget-cell>
+    </widget-row>
+</script>
+
+<script type="text/ng-template" id="main.html">
+    
+    <!-- Front page -->
+    <div>
         <widget-row>
             <widget-cell>
-                <h2>Hello</h2>
+                <h2>Connect</h2>
+                <div class="pDetails well well-lg">Welcome to portal messages!</div>
+                <div class="btn-group-horizontal" role="group">
+                    <button class="btn btn-default" ng-click="showInColumnOne('messages.html')">
+                        Messages
+                    </button>
+                    <button class="btn btn-default" ng-click="showInColumnOne('groups.html')">
+                        Groups
+                    </button>
+                    <button class="btn btn-default" ng-click="showInColumnOne('people.html')">
+                        People
+                    </button>
+                    <button class="btn btn-default" ng-click="showInColumnOne('profile.html')">
+                        Profile
+                    </button>
+                </div>
             </widget-cell>
         </widget-row>
-
-		<widget-row>
-            <widget-cell>
-                <h2>{{data.value.message}}</h2>
-            </widget-cell>
-        </widget-row>
+    </div>
+    
 </script>
 
 <!-- Menu template -->
@@ -19,4 +43,28 @@
             Menu button
         </a>
     </li>
+</script>
+
+<!-- Second View -->
+<script type="text/ng-template" id="messages.html">
+    <widget-row>
+        <widget-cell>
+            <h2>Messages</h2>
+            <div class="pDetails well well-lg"></div>
+            <div class="btn-group-vertical" role="group">
+                <button class="btn btn-default" ng-click="showInColumnOne('main.html')">
+                    Back to Main View
+                </button>
+                <button class="btn btn-default" ng-click="showInColumnOne('groups.html')">
+                        Groups
+                </button>
+                <button class="btn btn-default" ng-click="showInColumnOne('people.html')">
+                    People
+                </button>
+                <button class="btn btn-default" ng-click="showInColumnOne('profile.html')">
+                    Profile
+                </button>
+            </div>
+        </widget-cell>
+    </widget-row>
 </script>
