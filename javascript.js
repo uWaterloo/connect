@@ -99,10 +99,14 @@ angular.module('portalApp')
 // Factory maintains the state of the widget
 .factory('connectFactory', ['$http', '$rootScope', '$filter', '$q', function ($http, $rootScope, $filter, $q) {
 		
-	var initialized = {value: false};
+	var initialized = {
+        value: false
+    };
 
 	// Your variable declarations
-	var data = {value: null};
+	var data = {
+        value: null
+    };
     
     var loading = {
         value: true
@@ -150,6 +154,7 @@ angular.module('portalApp')
 	return {
 		init: init,
 		data: data,
+        loading: loading,
         openDataPeopleData: openDataPeopleData,
         mockDataPeopleData: mockDataPeopleData
 	};
