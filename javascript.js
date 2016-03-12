@@ -38,9 +38,9 @@ angular.module('portalApp')
         details: "I LOVE CONNOR #krishnor",
         ingroup: '0'
     }, {
-        title: "item 6",
+        title: "Zak Keller",
         details: "item 6 details",
-        ingroup: '2'
+        ingroup: '0'
     }];
     
     // Call server to fetch student data
