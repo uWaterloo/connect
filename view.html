@@ -131,6 +131,9 @@
             <!--EXPLORE TAB-->
             <div class="tab-pane" id="3">
                 <h2>Explore</h2>
+                
+                {{studentData}}
+                
             </div>
             
             <!--PROFILE TAB-->
@@ -142,7 +145,7 @@
             <widget-row>
             	<widget-cell>
                     <p>Level of Study: {{studentData.career}}</p>
-                    <p>Faculty: {{studentData.faculty}}</p>
+                    <p>Faculty: {{studentData.program}}</p>
 					<p>Current Term: {{studentData.level}}</p>
                     <p ng-if="studentData.departments != null">Departments:
 						<ul>
