@@ -61,7 +61,7 @@
                                 <widget-cell>
                                     <h2>
                                         Recent Messages <widget-icon name="mail-alt"></widget-icon>
-                                        <widget-icon name="edit"></widget-icon>
+                                        <widget-icon name="edit" clickable ng-click="showMessage(newmessage)"></widget-icon>
                                     </h2>
                                 </widget-cell>
                             </widget-row>
@@ -112,7 +112,6 @@
                         <widget-row>
                             <widget-cell>
                                 <div class="itemName">{{item.name}}</div>
-                                <p>{{item.name}}</p>
                                 <div class="pDetails">{{item.program}}</div>
                             </widget-cell>
                         </widget-row>
@@ -123,16 +122,24 @@
             <!--PROFILE TAB-->
             <div class="tab-pane" id="4">
                 
-                <br>
+                <div align="right"><widget-icon name="cog"></widget-icon></div>
             	<img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAQhAAAAJDkzOWFhNDg1LTU2MzAtNDBiOS05NzBkLTI4MzA0Mjc5ZTI5Zg.jpg" alt="Profile Picture" style="width:150px;height:150px;">
-                
+                    
             <widget-row>
             	<widget-cell>
                     <p>Level of Study: {{studentData.career}}</p>
                     <p>Faculty: {{studentData.faculty}}</p>
 					<p>Current Term: {{studentData.level}}</p>
-                    <p>Departments: {{studentData.departments}}</p>
-					<p>Plans: {{studentData.plantitles}}</p>
+                    <p ng-if="studentData.departments != null">Departments:
+						<ul>
+							<li ng-repeat="department in studentData.departments">{{department}}</li>
+						</ul>
+					</p>
+					<p ng-if="studentData.plans != null">Plans:
+						<ul>
+							<li ng-repeat="plan in studentData.plans">{{plan}}</li>
+						</ul>
+					</p>
             	</widget-cell>
         	</widget-row>
                 
@@ -163,6 +170,38 @@
     </widget-row>
 </script>
 
+<!-- Create New Message --> 
+<script type="text/ng-template" id="newmessage.html"> 
+    <widget-row> 
+        <widget-cell> 
+            <div class="pDetails"> 
+                <h2>New Message</h2>
+                <!-- Search Recipient (To:) --> 
+                <widget-search 
+                               label="To:" 
+                               placeholder="Type in name of the group or person" 
+                               search-results-title="To:"
+                               data="model" 
+                               min-char="2" 
+                               fields="['title']">
+                    <widget-searching>
+                        <widget-list list="item in searchResults" show-items="5">
+                            <widget-row clickable ng-click="showDetails(item)">
+                                <widget-cell fill>{{item.title}}</widget-cell>
+                                <widget-cell>
+                                    <widget-icon name="angle-right"></widget-icon>
+                                </widget-cell>
+                            </widget-row>
+                        </widget-list>
+                    </widget-searching>
+                </widget-search>
+
+            </div> 
+        </widget-cell> 
+    </widget-row> 
+</script> 
+<!-- PAGE TEMPLATE EXAMPLE --> 
+                
 <!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
