@@ -15,6 +15,8 @@ angular.module('portalApp')
     $scope.portalHelpers.showView('main.html', 1);
     $scope.portalHelpers.toggleLoading(false);
     $scope.item = {value:''};
+    $scope.openDataPeopleData = connectFactory.openDataPeopleData;
+    $scope.mockDataPeopleData = connectFactory.mockDataPeopleData;
 
     // Model for the search and list example
     $scope.model = [{
@@ -92,12 +94,6 @@ angular.module('portalApp')
     $scope.portalHelpers.invokeServerFunction('privDataRead').then(function (result) {
     	console.log('priv read result',result);
 	});
-    
-    $scope.portalHelpers.invokeServerFunction('getOpenData').then(function (result) {
-        console.log('getopendata data: ', result);
-        openDataExampleData.value = result.data;
-        sourceLoaded();
-    });
 }])
 
 // Factory maintains the state of the widget
@@ -107,24 +103,56 @@ angular.module('portalApp')
 
 	// Your variable declarations
 	var data = {value: null};
+    
+    var loading = {
+        value: true
+    };
+    
+    var openDataPeopleData = {
+        value: null
+    };
+    
+    var mockDataPeopleData = {
+        value: null
+    };
+    
+    var sourcesLoaded = 0;
 
-	var init = function ($scope) {
-		if (initialized.value)
-			return;
-		
-		initialized.value = true;
+    var init = function ($scope) {
+        if (initialized.value)
+            return;
+        initialized.value = true;
 
 		// Place your init code here:
-		data.value={message:"Welcome to Portal SDK!"};
-	}
+        
+        // OPEN DATA API EXAMPLE
+        $scope.portalHelpers.invokeServerFunction('getOpenData').then(function (result) {
+            console.log('getopendata data: ', result);
+            openDataPeopleData.value = result.data;
+            sourceLoaded();
+        });
 
+        // MOCK DATA API EXAMPLE
+        $scope.portalHelpers.invokeServerFunction('getMockData').then(function (result) {
+            console.log('getmockdata data: ', result);
+            mockDataPeopleData.value = result.data;
+            sourceLoaded();
+        });
+	}
+    
+    function sourceLoaded() {
+        sourcesLoaded++;
+        if (sourcesLoaded > 1)
+            loading.value = false;
+    }
 
 	// Expose init(), and variables
 	return {
 		init: init,
-		data: data
+		data: data,
+        openDataPeopleData: openDataPeopleData,
+        mockDataPeopleData: mockDataPeopleData
 	};
-
 }])
 // Custom directive example
 .directive('connectDirectiveName', ['$http', function ($http) {
