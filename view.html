@@ -25,7 +25,6 @@
         <div class="tab-content ">
             <!--MESSAGES TAB-->
             <div class="tab-pane active" id="1">
-                <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
             </div>
             <!--GROUPS TAB-->
             <div class="tab-pane" id="2">
@@ -37,15 +36,17 @@
             </div>
             <!--PROFILE TAB-->
             <div class="tab-pane" id="4">
-                <h3>add clearfix to tab-content (see the css)</h3>
+            <widget-row>
+            	<widget-cell>
+                <ul>
+                    <li>{{studentData.career}}</li>
+                    <li>{{studentData.faculty}}</li>
+                    <li>{{studentData.studentNum}}</li>
+					<li>{{studentData.level}}</li>
+                </ul>
+            	</widget-cell>
+        	</widget-row>
             </div>
-        </div>
-	</div>              
-    </widget-cell>
-    </widget-row>
-</div>
-    
-</script>
 
 <!-- Menu template -->
 <script type="text/ng-template" id="widgetMenu.html">

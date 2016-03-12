@@ -11,6 +11,16 @@ angular.module('portalApp')
 
     // Import variables and functions from service
     $scope.data = connectFactory.data;
+    $scope.studentData = {};
+    $scope.portalHelpers.showView('main.html', 1);
+    $scope.portalHelpers.toggleLoading(false);
+    
+    // Call server to fetch student data
+    $scope.portalHelpers.invokeServerFunction('getData')
+        .then(function (result) {
+                $scope.studentData = result;
+        		console.log(result);
+            });
 
     // initialize the service
     connectFactory.init($scope);
