@@ -19,8 +19,9 @@
     <div id="connect" class="container">
     	<ul class="nav nav-tabs">
     		<li class="active"><a  href="#1" data-toggle="tab">Messages</a></li>
-			<li><a href="#2" data-toggle="tab">Explore</a></li>
-			<li><a href="#3" data-toggle="tab">Profile</a></li>
+			<li><a href="#2" data-toggle="tab">Contacts</a></li>
+            <li><a href="#3" data-toggle="tab">Explore</a></li>
+			<li><a href="#4" data-toggle="tab">Profile</a></li>
 		</ul>
         <div class="tab-content ">
             
@@ -83,20 +84,20 @@
                 
             </div>
             
-            <!--PEOPLE TAB-->
+            <!--CONTACTS TAB-->
             <div class="tab-pane" id="2">
                
                 <!-- WIDGET SEARCH BLOCK --> 
                 <widget-search 
-                     label="Search for other groups" 
-                     placeholder="Type in the name of the group" 
-                     search-results-title="Suggested Groups"
+                     label="Search for your contacts" 
+                     placeholder="Type in the name of the group or person" 
+                     search-results-title="Your Contacts"
                      data="model" 
                      min-char="2" 
                      fields="['title']">
                     <widget-filter 
-                            fields="['incontacts']" 
-                            filters="[{value:'0',text:'In Groups'},{value:'1',text:'Not in groups'}]">
+                            fields="['ingroup']" 
+                            filters="[{value:'0',text:'People'},{value:'1',text:'Groups'}]">
                     </widget-filter>
                     <widget-searching>
                         <widget-list list="item in searchResults" show-items="7">
@@ -111,7 +112,7 @@
                     <widget-not-searching>
                         <widget-row>
                             <widget-cell>
-                                <h2>Item List</h2>
+                                <h2>Your Contacts</h2>
                             </widget-cell>
                         </widget-row>
                         <widget-list list="item in model" show-items="7">
@@ -127,8 +128,13 @@
                
             </div>
             
-            <!--PROFILE TAB-->
+            <!--EXPLORE TAB-->
             <div class="tab-pane" id="3">
+                <h2>Explore</h2>
+            </div>
+            
+            <!--PROFILE TAB-->
+            <div class="tab-pane" id="4">
                 
                 <div align="right"><widget-icon name="cog"></widget-icon></div>
             	<img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAQhAAAAJDkzOWFhNDg1LTU2MzAtNDBiOS05NzBkLTI4MzA0Mjc5ZTI5Zg.jpg" alt="Profile Picture" style="width:150px;height:150px;">
@@ -208,7 +214,6 @@
         </widget-cell> 
     </widget-row> 
 </script> 
-<!-- PAGE TEMPLATE EXAMPLE --> 
                 
 <!-- Bootstrap core JavaScript
     ================================================== -->
