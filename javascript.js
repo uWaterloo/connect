@@ -92,6 +92,12 @@ angular.module('portalApp')
     $scope.portalHelpers.invokeServerFunction('privDataRead').then(function (result) {
     	console.log('priv read result',result);
 	});
+    
+    $scope.portalHelpers.invokeServerFunction('getOpenData').then(function (result) {
+        console.log('getopendata data: ', result);
+        openDataExampleData.value = result.data;
+        sourceLoaded();
+    });
 }])
 
 // Factory maintains the state of the widget
