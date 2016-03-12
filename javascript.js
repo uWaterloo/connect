@@ -96,6 +96,11 @@ angular.module('portalApp')
             $scope.portalHelpers.toggleLoading(false);
         }
     });
+    
+    // Handle click on event
+    $scope.showEvent = function (event) {
+        $scope.portalHelpers.showView('event.html', 2);
+    };
 
     // Handle click on new message icon in the messages and create message
     $scope.showMessage = function (newmessage) {
@@ -126,7 +131,7 @@ angular.module('portalApp')
     // Get list to search for students
     $scope.portalHelpers.invokeServerFunction('privDataRead').then(function (result) {
     	console.log('priv read result',result);
-	});
+	});      
 }])
 
 // Factory maintains the state of the widget
@@ -144,22 +149,18 @@ angular.module('portalApp')
     var loading = {
         value: true
     };
-    
-    var sourcesLoaded = 0;
 
     var init = function ($scope) {
         if (initialized.value)
             return;
         initialized.value = true;
-
-		// Place your init code here:
 	}
-
+    
 	// Expose init(), and variables
 	return {
 		init: init,
 		data: data,
-        loading: loading
+        loading: loading,
 	};
 }])
 // Custom directive example
