@@ -20,7 +20,9 @@ angular.module('portalApp')
     $scope.model = [{
         title: "Jessie Won",
         details: "Hey, how's it going?",
-        ingroup: '0'
+        ingroup: '0',
+        user_id: 'jwon',
+        program: 'Systems Design Engineering'
     }, {
         title: "Portal Hackathon Team",
         details: "Hey guys! Lunch is at 12!",
@@ -32,29 +34,45 @@ angular.module('portalApp')
     }, {
         title: "Tara Yuen",
         details: "Are you going to the portal hackathon today?",
-        ingroup: '0'
+        ingroup: '0',
+        user_id: 'tyuen',
+        program: 'Systems Design Engineering'
     }, {
         title: "Krystyna Brudnicki",
         details: "I LOVE CONNOR #krishnor",
-        ingroup: '0'
+        ingroup: '0',
+        user_id: 'kbrudnicki',
+        program: 'Systems Design Engineering'
     }, {
         title: "Zak Keller",
         details: "item 6 details",
-        ingroup: '0'
+        ingroup: '0',
+        user_id: 'zkeller',
+        program: 'Systems Design Engineering'
     }];
-    
-    // Handle click on new message icon in messages and write message
-    $scope.showMessage = function (newmessage) {
-        $scope.item.value = newmessage;
-        $scope.portalHelpers.showView('newmessage.html', 2);
-    };
     
     // Call server to fetch student data
     $scope.portalHelpers.invokeServerFunction('getData')
         .then(function (result) {
-                $scope.studentData = result;
-        		console.log(result);
-            });
+        	$scope.studentData = result;
+        	console.log(result);
+        });
+    
+    // OPEN DATA API EXAMPLE
+    $scope.portalHelpers.invokeServerFunction('getOpenData')
+        .then(function (result) {
+        	$scope.openDataPeopleData = result;
+        	console.log('getopendata data: ', result);
+        	openDataPeopleData.value = result.data;
+    });
+
+    // MOCK DATA API EXAMPLE
+    $scope.portalHelpers.invokeServerFunction('getMockData')
+        .then(function (result) {
+        	$scope.mockDataPeopleData.value = result;
+            console.log('getmockdata data: ', result);
+            mockDataPeopleData.value = result.data;
+    });
  
     // initialize the service
     connectFactory.init($scope);
@@ -94,33 +112,44 @@ angular.module('portalApp')
         $scope.showDetails(nextItem);
     }
 
+    // Get list to search for students
+    $scope.portalHelpers.invokeServerFunction('privDataRead').then(function (result) {
+    	console.log('priv read result',result);
+	});
 }])
 
 // Factory maintains the state of the widget
 .factory('connectFactory', ['$http', '$rootScope', '$filter', '$q', function ($http, $rootScope, $filter, $q) {
 		
-	var initialized = {value: false};
+	var initialized = {
+        value: false
+    };
 
 	// Your variable declarations
-	var data = {value: null};
+	var data = {
+        value: null
+    };
+    
+    var loading = {
+        value: true
+    };
+    
+    var sourcesLoaded = 0;
 
-	var init = function ($scope) {
-		if (initialized.value)
-			return;
-		
-		initialized.value = true;
+    var init = function ($scope) {
+        if (initialized.value)
+            return;
+        initialized.value = true;
 
 		// Place your init code here:
-		data.value={message:"Welcome to Portal SDK!"};
 	}
-
 
 	// Expose init(), and variables
 	return {
 		init: init,
-		data: data
+		data: data,
+        loading: loading
 	};
-
 }])
 // Custom directive example
 .directive('connectDirectiveName', ['$http', function ($http) {
