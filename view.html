@@ -18,7 +18,7 @@
 	<div class="container"></div>
     <div id="connect" class="container">
     	<ul class="nav nav-tabs">
-    		<li class="active"><a  href="#1" data-toggle="tab">Messages</a></li>
+    		<li class="active"><a href="#1" data-toggle="tab">Messages</a></li>
 			<li><a href="#2" data-toggle="tab">Groups</a></li>
 			<li><a href="#3" data-toggle="tab">People</a></li>
 			<li><a href="#4" data-toggle="tab">Profile</a></li>
@@ -167,6 +167,11 @@
             Menu button
         </a>
     </li>
+    <li>
+        <a clickable ng-click="showEvent(event)">
+            Events
+        </a>
+    </li>
 </script>
 
 <!-- View Message Pages -->
@@ -183,8 +188,65 @@
             <div class="pHighlight">{{item.value.details}}</div>
         </widget-cell>
     </widget-row>
+    <!-- DATABASE EXAMPLE -->
+    <div class="collapseMe">
+        <widget-row>
+            <widget-cell>
+                <h3>Comment</h3>
+            </widget-cell>
+        </widget-row>
+        <div ng-if="!dbData.value.status">
+            <widget-row>
+                <widget-cell>
+                    <form class="form-inline" ng-submit="insertData()">
+                        <div class="input-group" style="width: 100%;">
+                            <input type="text" class="form-control" ng-model="insertValue.value" placeholder="Write your comment here..." />
+                            <span class="input-group-btn" style="overflow:hidden;">
+                                <button class="btn btn-primary glyphicon glyphicon glyphicon-ok btn" type="submit" style="margin-top: -1px;"></button>
+                            </span>
+                        </div>
+                    </form>
+                </widget-cell>
+            </widget-row>
+
+            <widget-row ng-repeat="item in dbData.value">
+                <widget-cell>
+                    <div class="pDetails">UserId: {{item.userId}}</div>
+                    <div class="pDetails">Value: {{item.value}}</div>
+                </widget-cell>
+            </widget-row>
+        </div>
+    </div>
 </script>
 
+<!-- Share Event -->
+<script type="text/ng-template" id="event.html">
+    <widget-row>
+        <widget-cell>
+            <h2>Events</h2>
+        </widget-cell>
+    </widget-row>
+    <widget-row>
+        <widget-cell>
+            <b>Explorations 2016</b>
+            <widget-icon clickable ng-click="showMessage(newmessage)" name="share"></widget-icon>
+            <p>March 14 at 5:00 PM</p>
+            <b>WIN Student Seminar Series</b>
+            <widget-icon clickable ng-click="showMessage(newmessage)" name="share"></widget-icon>
+            <p>March 15 at 12:00 PM</p>
+            <b>Capstone Design Symposium</b>
+            <widget-icon clickable ng-click="showMessage(newmessage)" name="share"></widget-icon>
+            <p>March 16 at 9:00 AM</p>
+            <b>Counselling Drop-In Sessions</b>
+            <widget-icon clickable ng-click="showMessage(newmessage)" name="share"></widget-icon>
+            <p>March 17 at 2:00 PM</p>
+            <b>TronCon</b>
+            <widget-icon clickable ng-click="showMessage(newmessage)" name="share"></widget-icon>
+            <p>March 19 at 10:00 AM</p>
+        </widget-cell>
+    </widget-row>    
+</script>
+                
 <!-- Create New Message --> 
 <script type="text/ng-template" id="newmessage.html"> 
     <widget-row> 
@@ -210,10 +272,9 @@
                         </widget-list>
                     </widget-searching>
                 </widget-search>
-
             </div> 
         </widget-cell> 
-    </widget-row> 
+    </widget-row>
 </script> 
 <!-- PAGE TEMPLATE EXAMPLE --> 
                 
