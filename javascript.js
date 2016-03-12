@@ -21,32 +21,38 @@ angular.module('portalApp')
         title: "Jessie Won",
         details: "Hey, how's it going?",
         ingroup: '0',
+        incontacts: '1',
         user_id: 'jwon',
         program: 'Systems Design Engineering'
     }, {
         title: "Portal Hackathon Team",
         details: "Hey guys! Lunch is at 12!",
-        ingroup: '1'
+        ingroup: '1',
+        incontacts: '1'
     }, {
         title: "SYDE 2020",
         details: "When's our last exam?",
-        ingroup: '1'
+        ingroup: '1',
+        incontacts: '1'
     }, {
         title: "Tara Yuen",
         details: "Are you going to the portal hackathon today?",
         ingroup: '0',
+        incontacts: '1',
         user_id: 'tyuen',
         program: 'Systems Design Engineering'
     }, {
         title: "Krystyna Brudnicki",
         details: "I LOVE CONNOR #krishnor",
         ingroup: '0',
+        incontacts: '1',
         user_id: 'kbrudnicki',
         program: 'Systems Design Engineering'
     }, {
         title: "Zak Keller",
         details: "item 6 details",
         ingroup: '0',
+        incontacts: '1',
         user_id: 'zkeller',
         program: 'Systems Design Engineering'
     }];
@@ -91,6 +97,11 @@ angular.module('portalApp')
         }
     });
 
+    // Handle click on new message icon in the messages and create message
+    $scope.showMessage = function (newmessage) {
+        $scope.portalHelpers.showView('newmessage.html', 2);
+    };
+    
     // Handle click on an item in the list and search example
     $scope.showDetails = function (item) {
         // Set which item to show in the details view
