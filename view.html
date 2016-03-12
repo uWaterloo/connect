@@ -15,6 +15,7 @@
 	<widget-row>
 	<widget-cell>
 	<!-- Nav tabs -->
+	<div class="container"><h2>Portal Messages</h2></div>
     <div id="connect" class="container">
     	<ul class="nav nav-tabs">
     		<li class="active"><a  href="#1" data-toggle="tab">Messages</a></li>
@@ -25,6 +26,51 @@
         <div class="tab-content ">
             <!--MESSAGES TAB-->
             <div class="tab-pane active" id="1">
+                
+                <!-- SEARCH AND LIST EXAMPLE -->
+    <div class="collapseMe">
+        
+        <widget-search 
+             label="Who are you looking for?"
+             placeholder="Type in the name of the group or person" 
+             search-results-title="Results"
+             data="model" 
+             min-char="2" 
+             fields="['title','details']">
+            <widget-filter 
+                    fields="['ingroup']" 
+                    filters="[{value:'0',text:'People'},{value:'1',text:'Groups'}]">
+            </widget-filter>
+
+            <widget-searching>
+                <widget-list list="item in searchResults" show-items="3">
+                    <widget-row clickable ng-click="showDetails(item)">
+                        <widget-cell fill>{{item.title}}</widget-cell>
+                        <widget-cell>
+                            <widget-icon name="angle-right"></widget-icon>
+                        </widget-cell>
+                    </widget-row>
+                </widget-list>
+            </widget-searching>
+
+            <widget-not-searching>
+                <widget-row>
+                    <widget-cell>
+                        <h2>Item List</h2>
+                    </widget-cell>
+                </widget-row>
+                <widget-list list="item in model" show-items="3">
+                    <widget-row clickable ng-click="showDetails(item)">
+                        <widget-cell fill>{{item.title}}</widget-cell>
+                        <widget-cell>
+                            <widget-icon name="angle-right"></widget-icon>
+                        </widget-cell>
+                    </widget-row>
+                </widget-list>
+            </widget-not-searching>
+        </widget-search>
+    </div>
+                
             </div>
             <!--GROUPS TAB-->
             <div class="tab-pane" id="2">
@@ -38,12 +84,9 @@
             <div class="tab-pane" id="4">
             <widget-row>
             	<widget-cell>
-                <ul>
-                    <li>{{studentData.career}}</li>
-                    <li>{{studentData.faculty}}</li>
-                    <li>{{studentData.studentNum}}</li>
-					<li>{{studentData.level}}</li>
-                </ul>
+                    <p>Level of Study: {{studentData.career}}</p>
+                    <p>Faculty: {{studentData.faculty}}</p>
+					<p>Current Term: {{studentData.level}}</p>
             	</widget-cell>
         	</widget-row>
             </div>
@@ -57,7 +100,9 @@
     </li>
 </script>
 
-<!-- Bootstrap core JavaScript -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
