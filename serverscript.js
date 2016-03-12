@@ -18,3 +18,12 @@ function getData() {
     return studentInfo;
 }
 
+function getOpenData() {
+    // Paste your API key here. IMPORTANT: DO NOT PUSH THIS TO GITHUB, STORE KEY IN DB
+    var apiKey = "fd2948fdde9149cf94c403b3c64d325d"; 
+    if (apiKey == "")
+        return '{"error":"No Api Key! Add your key in the server script file."}';
+
+    return proxy.GetProxy('https://api.uwaterloo.ca/v2/foodservices/watcard.json?key=' + apiKey);
+}
+
