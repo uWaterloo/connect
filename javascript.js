@@ -34,8 +34,8 @@ angular.module('portalApp')
         details: "Are you going to the portal hackathon today?",
         ingroup: '0'
     }, {
-        title: "item 5",
-        details: "item 5 details",
+        title: "Krystyna Brudnicki",
+        details: "I LOVE CONNOR #krishnor",
         ingroup: '0'
     }, {
         title: "item 6",
