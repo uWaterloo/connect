@@ -87,36 +87,51 @@
             <!--GROUPS TAB-->
             <div class="tab-pane" id="2">
                 
-    			<div id="connect" class="container">
-                <div class="dropdown" align = "right">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Dropdown
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#5">Your Groups</a></li>
-                        <li><a href="#6">Recommended Groups</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#7">Groups Settings</a></li>
-                    </ul>
-                </div>
-            	</div>
                 
             </div>
             
             <!--PEOPLE TAB-->
             <div class="tab-pane" id="3">
-                <!-- MOCK DATA API PEOPLE -->
-                <div class="collapseMe">
-                    <widget-list list="item in mockDataPeopleData.value">
+               
+                <!-- WIDGET SEARCH BLOCK --> 
+                <widget-search 
+                     label="Search for other groups" 
+                     placeholder="Type in the name of the group" 
+                     search-results-title="Suggested Groups"
+                     data="model" 
+                     min-char="2" 
+                     fields="['title']">
+                    <widget-filter 
+                            fields="['incontacts']" 
+                            filters="[{value:'0',text:'In Groups'},{value:'1',text:'Not in groups'}]">
+                    </widget-filter>
+                    <widget-searching>
+                        <widget-list list="item in searchResults" show-items="7">
+                            <widget-row clickable ng-click="showDetails(item)">
+                                <widget-cell fill>{{item.title}}</widget-cell>
+                                <widget-cell>
+                                    <widget-icon name="angle-right"></widget-icon>
+                                </widget-cell>
+                            </widget-row>
+                        </widget-list>
+                    </widget-searching>
+                    <widget-not-searching>
                         <widget-row>
                             <widget-cell>
-                                <div class="itemName">{{item.name}}</div>
-                                <div class="pDetails">{{item.program}}</div>
+                                <h2>Item List</h2>
                             </widget-cell>
                         </widget-row>
-                    </widget-list>
-                </div>
+                        <widget-list list="item in model" show-items="7">
+                            <widget-row clickable ng-click="showDetails(item)">
+                                <widget-cell fill>{{item.title}}</widget-cell>
+                                <widget-cell>
+                                    <widget-icon name="angle-right"></widget-icon>
+                                </widget-cell>
+                            </widget-row>
+                        </widget-list>
+                    </widget-not-searching>
+                </widget-search>
+               
             </div>
             
             <!--PROFILE TAB-->
