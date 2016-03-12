@@ -43,9 +43,12 @@
                         </widget-filter>
                         
                         <widget-searching>
-                            <widget-list list="item in searchResults" show-items="3">
+                            <widget-list list="item in searchResults" show-items="5">
                                 <widget-row clickable ng-click="showDetails(item)">
-                                    <widget-cell fill>{{item.title}}</widget-cell>
+                                    <widget-cell>
+                                        <b>{{item.title}}</b>
+                                        <p>{{item.details}}</p>
+                                    </widget-cell>
                                     <widget-cell>
                                         <widget-icon name="angle-right"></widget-icon>
                                     </widget-cell>
@@ -56,12 +59,17 @@
                         <widget-not-searching>
                             <widget-row>
                                 <widget-cell>
-                                    <h2>Recent Messages</h2>
+                                    <h2>Recent Messages <widget-icon name="mail-alt"></widget-icon>
+                                        <div align = "right"><widget-icon name="edit"></widget-icon></div>
+                                    </h2>
                                 </widget-cell>
                             </widget-row>
-                            <widget-list list="item in model" show-items="3">
+                            <widget-list list="item in model" show-items="5">
                                 <widget-row clickable ng-click="showDetails(item)">
-                                    <widget-cell fill>{{item.title}}</widget-cell>
+                                    <widget-cell>
+                                        <b>{{item.title}}</b>
+                                        <p>{{item.details}}</p>
+                                    </widget-cell>
                                     <widget-cell>
                                         <widget-icon name="angle-right"></widget-icon>
                                     </widget-cell>
