@@ -59,8 +59,9 @@
                         <widget-not-searching>
                             <widget-row>
                                 <widget-cell>
-                                    <h2>Recent Messages <widget-icon name="mail-alt"></widget-icon>
-                                        <div align = "right"><widget-icon name="edit"></widget-icon></div>
+                                    <h2>
+                                        Recent Messages <widget-icon name="mail-alt"></widget-icon>
+                                        <widget-icon name="edit"></widget-icon>
                                     </h2>
                                 </widget-cell>
                             </widget-row>
@@ -71,7 +72,7 @@
                                         <p>{{item.details}}</p>
                                     </widget-cell>
                                     <widget-cell>
-                                        <widget-icon name="angle-right"></widget-icon>
+                                        <div align = "right"><widget-icon name="angle-right"></widget-icon></div>
                                     </widget-cell>
                                 </widget-row>
                             </widget-list>
@@ -85,7 +86,22 @@
             
             <!--GROUPS TAB-->
             <div class="tab-pane" id="2">
-                <h3>Notice the gap between the content and tab after applying a background color</h3>
+                
+    			<div id="connect" class="container">
+                <div class="dropdown" align = "right">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Dropdown
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#5">Your Groups</a></li>
+                        <li><a href="#6">Recommended Groups</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#7">Groups Settings</a></li>
+                    </ul>
+                </div>
+            	</div>
+                
             </div>
             
             <!--PEOPLE TAB-->
@@ -106,13 +122,20 @@
             
             <!--PROFILE TAB-->
             <div class="tab-pane" id="4">
+                
+                <br>
+            	<img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAQhAAAAJDkzOWFhNDg1LTU2MzAtNDBiOS05NzBkLTI4MzA0Mjc5ZTI5Zg.jpg" alt="Profile Picture" style="width:150px;height:150px;">
+                
             <widget-row>
             	<widget-cell>
                     <p>Level of Study: {{studentData.career}}</p>
                     <p>Faculty: {{studentData.faculty}}</p>
 					<p>Current Term: {{studentData.level}}</p>
+                    <p>Departments: {{studentData.departments}}</p>
+					<p>Plans: {{studentData.plantitles}}</p>
             	</widget-cell>
         	</widget-row>
+                
             </div>
 
 <!-- Menu template -->
